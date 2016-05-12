@@ -7,7 +7,7 @@ session_start ();
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>MetHotels :: Home</title>
+		<title>MetHotels :: O Nama</title>
 		<!-- Bootstrap and demo CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -36,10 +36,10 @@ session_start ();
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
 							<li>
+								<a href="index.php">Home</a>
+							</li>
+							<li class="active">
 								<a href="onama.php">O Nama</a>
 							</li>
 							<li>
@@ -47,12 +47,12 @@ session_start ();
 							</li>
 							<li>
 								<a href="reg.php">Registracija</a>
-							</li>
+							</li>	
 					<?php if(isset($_SESSION['username'])) : ?>
 							<li>
 								Zdravo <?php echo $_SESSION['username']; ?><a href="logout.php">Log Out</a>
 							</li>						
-					<?php endif; ?>																
+					<?php endif; ?>														
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div><!--/.container-fluid -->
@@ -66,37 +66,47 @@ session_start ();
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
-					<h3>Column 1</h3>
+				<div class="col-sm-12">
+					<h3>O nama</h3>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
 					</p>
 					<p>
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
 					</p>
-				</div>
-				<div class="col-sm-4">
-					<h3>Column 2</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-					</p>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-					</p>
-				</div>
-				<div class="col-sm-4">
-					<h3>Column 3</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-					</p>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-					</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Soba</th>
+								<th>Opremljenost</th>
+								<th>cena po danu</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Ekonomik</td>
+								<td>Minimalna, dva kreveta i sto</td>
+								<td>10 &euro;</td>
+							</tr>
+							<tr>
+								<td>Bussiness</td>
+								<td>dva kreveta, sto frizider</td>
+								<td>20 &euro;</td>
+							</tr>
+							<tr>
+								<td>Royal</td>
+								<td>Po dogovoru</td>
+								<td>od 30 &euro;</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="row">
 				<footer class="well">
-					<p class="text-center">&copy; Nikola Bodrozic</p>
+					<p class="text-center">
+						&copy; Nikola Bodrozic
+					</p>
 				</footer>
 			</div>
 			<!-- Bootstrap core JavaScript-->

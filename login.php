@@ -1,5 +1,41 @@
 <?php
 session_start ();
+
+	if (! isset ( $_SESSION ['nonce'] )) {
+		$_SESSION ['nonce'] = md5(mt_rand ( 10, 1000000 ));
+	}
+
+	require ("include/global.inc");
+		$poruka = "";
+	if( isset ( $_POST ['anticsrf'] ) && ($_SESSION ['nonce'] == $_POST ['anticsrf']) ){
+		global $conn;
+
+		$username = AppWide::cleanString($_POST['username']);
+		$pass = hash( 'sha256', trim($_POST['password']));
+
+		$sql = "SELECT * FROM korisnici WHERE username = ? AND pass = ?";
+		$query = $conn->prepare($sql);
+		$query->bind_param('ss', $username,  $pass );
+		$query->execute();
+		$query->store_result();
+		if ($query->num_rows > 0) {
+			//return true;
+			$poruka = "<div class=\"alert alert-success\" role=\"alert\">
+						<span class=\"glyphicon glyphicon glyphicon-ok-sign\" aria-hidden=\"true\"></span>
+						<span class=\"sr-only\">Potvrda:</span>
+						Ulogovani ste
+					</div>";
+					$_SESSION ['username'] = $username;
+		} else {
+			$poruka = "<div class=\"alert alert-danger\" role=\"alert\">
+						<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+						<span class=\"sr-only\">Greška:</span>
+						Unesite ispravne kredencijle
+					</div>";
+		}
+		$query->close();   			
+
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +43,7 @@ session_start ();
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>MetHotels :: Home</title>
+		<title>MetHotels :: Login</title>
 		<!-- Bootstrap and demo CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -36,13 +72,13 @@ session_start ();
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="#">Home</a>
+							<li>
+								<a href="index.php">Home</a>
 							</li>
 							<li>
 								<a href="onama.php">O Nama</a>
 							</li>
-							<li>
+							<li class="active">
 								<a href="login.php">Login</a>
 							</li>
 							<li>
@@ -52,7 +88,7 @@ session_start ();
 							<li>
 								Zdravo <?php echo $_SESSION['username']; ?><a href="logout.php">Log Out</a>
 							</li>						
-					<?php endif; ?>																
+					<?php endif; ?>								
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div><!--/.container-fluid -->
@@ -66,37 +102,43 @@ session_start ();
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4">
-					<h3>Column 1</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-					</p>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-					</p>
-				</div>
-				<div class="col-sm-4">
-					<h3>Column 2</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-					</p>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-					</p>
-				</div>
-				<div class="col-sm-4">
-					<h3>Column 3</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-					</p>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
-					</p>
+				<div class="col-md-12">
+					<h3>Ulogujte se</h3>
+					
+
+					
+<?php echo $poruka; ?>
+					
+					<form action="#" method="post">
+						<div class="input-group">
+							<input type="text" name="username" class="form-control" placeholder="username" aria-describedby="basic-addon2">
+						</div>
+						<br>
+						<div class="input-group">
+							<input type="password" name="password" class="form-control" placeholder="password"aria-describedby="basic-addon2">
+						</div>
+						<br>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox">
+								Zapamti me</label>
+						</div>
+						<div class="input-group">
+							<button type="submit" name="submit" id="submit"	class="btn btn-success" value="Login">
+								Login
+							</button>
+							<br>
+						</div>
+						<input type="hidden" name="anticsrf" value="<?php echo $_SESSION ['nonce']; ?>">
+						<br>
+					</form>
 				</div>
 			</div>
 			<div class="row">
 				<footer class="well">
-					<p class="text-center">&copy; Nikola Bodrozic</p>
+					<p class="text-center">
+						&copy; Nikola Bodrozic
+					</p>
 				</footer>
 			</div>
 			<!-- Bootstrap core JavaScript-->
