@@ -1,4 +1,5 @@
 <?php
+// POST request
 if(isset($_POST["r"])){
 	header("Content-type: application/json");
 		$r = trim($_POST["r"]);
@@ -10,6 +11,7 @@ if(isset($_POST["r"])){
 	echo json_encode($arr);
 }
 
+// GET request
 if(isset($_GET["r"])){
 	header("Content-type: application/json");
 		$r = trim($_GET["r"]);
