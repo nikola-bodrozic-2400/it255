@@ -1,0 +1,28 @@
+<div class="row">
+				<div class="col-md-12">
+					<h3>Ulogujte se</h3>
+					<form action="#" method="post">
+						<div class="input-group">
+							<input type="text" name="username" class="form-control" placeholder="username" aria-describedby="basic-addon2">
+						</div>
+						<br>
+						<div class="input-group">
+							<input type="password" name="password" class="form-control" placeholder="password"aria-describedby="basic-addon2">
+						</div>
+						<br>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox">
+								Zapamti me</label>
+						</div>
+						<div class="input-group">
+							<button type="submit" name="submit" id="submit"	class="btn btn-success" value="Login">
+								Login
+							</button>
+							<br>
+						</div>
+						<input type="hidden" name="anticsrf" value="<?php echo $_SESSION ['nonce']; ?>">
+						<br>
+					</form>
+				</div>
+</div>

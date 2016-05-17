@@ -1,0 +1,15 @@
+Korisnici<br/> <br/>
+<div *ngFor="#korisnik of korisnici">
+Ime: {{korisnik.name}}
+<br/>
+Email: {{korisnik.email}}
+<br/>
+<span *ngIf="korisnik.gender == 'male'">
+Pol: Muško
+</span>
+<span *ngIf="korisnik.gender != 'male'">
+Pol: Žensko
+</span><br/>
+Company: {{korisnik.company}}
+<br/>  <br/>
+</div>
