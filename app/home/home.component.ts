@@ -8,8 +8,8 @@ import 'rxjs/Rx';
 })
 
 export class HomeComponent{
-	korisnici: Object[];
+	sobe: Object[];
 	constructor(http: Http){
-		http.get('korisnici.json').map(res => res.json()).subscribe(korisnici => this.korisnici = korisnici);
+		http.get('http://localhost/MetHotels/index2.php').map(res => res.json()).subscribe(sobe => this.sobe = sobe);
 	}
 }
