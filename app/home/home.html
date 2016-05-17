@@ -1,5 +1,23 @@
 					<h1>MetHotels Home page</h1>
 			<div class="row">
+					<h3>Podatci iz JSON-fajla</h3>
+					<div *ngFor="#korisnik of korisnici">
+					Ime: {{korisnik.name}}
+					<br/>
+					Email: {{korisnik.email}}
+					<br/>
+					<span *ngIf="korisnik.gender == 'male'">
+					Pol: Muško
+					</span>
+					<span *ngIf="korisnik.gender != 'male'">
+					Pol: Žensko
+					</span><br/>
+					Company: {{korisnik.company}}
+					<br/>  <br/>
+</div>
+			</div>
+
+			<div class="row">
 				<div class="col-sm-4">
 					<h3>Column 1</h3>
 					<p>
