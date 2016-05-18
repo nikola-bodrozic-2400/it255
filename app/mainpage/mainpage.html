@@ -1,0 +1,22 @@
+<form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="name">
+    </div>
+</form>
+<div class="col-lg-12">
+<br/>Korisnici<br/> 	<br/>
+<div *ngFor="#korisnik of korisnici| SearchPipe:name">
+	Ime: {{korisnik.name}}
+	<br/>
+	Email: {{korisnik.email}}
+	<br/>
+	<span *ngIf="korisnik.gender == 'male'">
+		Pol: Muško
+	</span>
+	<span *ngIf="korisnik.gender != 'male'">
+		Pol: Žensko
+	</span><br/>
+	Company: {{korisnik.company}}
+	<br/>	<br/>
+</div>
+</div>
