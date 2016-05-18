@@ -11,7 +11,7 @@ import 'rxjs/Rx';
 })
 
 export class MainPageComponent { 
-	name:String = "";
+	broj_kreveta:String = "";
 	sobe: Object[];
 	constructor(http: Http){
 		http.get('http://localhost/MetHotels/index2.php')

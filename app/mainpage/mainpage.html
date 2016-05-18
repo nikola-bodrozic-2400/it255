@@ -1,22 +1,26 @@
 <form class="navbar-form navbar-left" role="search">
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="name">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="broj_sobe">
     </div>
 </form>
 <div class="col-lg-12">
 <br/>Sobe<br/> 	<br/>
-<div *ngFor="#soba of sobe| SearchPipe:name">
-	Ime: {{soba.name}}
+<div *ngFor="#soba of sobe| SearchPipe:broj_kreveta">
+	broj sobe: {{soba.broj_sobe}}
 	<br/>
-	Email: {{soba.email}}
+		broj kreveta: {{soba.broj_kreveta}}
 	<br/>
-	<span *ngIf="soba.gender == 'male'">
-		Pol: Muško
-	</span>
-	<span *ngIf="soba.gender != 'male'">
-		Pol: Žensko
-	</span><br/>
-	Company: {{soba.company}}
-	<br/>	<br/>
+
+
+
+	<hr/>
 </div>
 </div>
+<div class="col-lg-12">
+<p>Mauris iaculis, velit in faucibus congue, diam lectus fermentum nibh, at feugiat est erat ut arcu. Ut varius accumsan tortor, in gravida ante semper vitae. Quisque sed magna sem. Maecenas fermentum ex vitae nunc efficitur, id feugiat massa venenatis. In porttitor metus sit amet arcu maximus fringilla. Phasellus quis nisi ligula. Praesent sit amet viverra nunc.
+</p>
+<p>Phasellus in auctor nulla. Maecenas aliquet lectus et odio elementum, ac cursus magna aliquet. Fusce ullamcorper scelerisque tellus ut molestie. Etiam eu tempus dolor, eget varius metus. Nulla facilisi. Maecenas diam nunc, laoreet nec rhoncus ac, porttitor et sapien. Aenean non interdum nibh. Etiam rutrum, diam quis elementum aliquet, lorem tortor iaculis quam, feugiat varius sapien diam eget lectus.
+</p>
+</div>
+
+
