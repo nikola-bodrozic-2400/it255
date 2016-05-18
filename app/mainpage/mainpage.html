@@ -4,19 +4,19 @@
     </div>
 </form>
 <div class="col-lg-12">
-<br/>Korisnici<br/> 	<br/>
-<div *ngFor="#korisnik of korisnici| SearchPipe:name">
-	Ime: {{korisnik.name}}
+<br/>Sobe<br/> 	<br/>
+<div *ngFor="#soba of sobe| SearchPipe:name">
+	Ime: {{soba.name}}
 	<br/>
-	Email: {{korisnik.email}}
+	Email: {{soba.email}}
 	<br/>
-	<span *ngIf="korisnik.gender == 'male'">
+	<span *ngIf="soba.gender == 'male'">
 		Pol: Muško
 	</span>
-	<span *ngIf="korisnik.gender != 'male'">
+	<span *ngIf="soba.gender != 'male'">
 		Pol: Žensko
 	</span><br/>
-	Company: {{korisnik.company}}
+	Company: {{soba.company}}
 	<br/>	<br/>
 </div>
 </div>
