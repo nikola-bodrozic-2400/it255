@@ -13,6 +13,6 @@ export class SearchPipe {
     }
     console.log('transform');
 	
-    return value.filter(item=>item.broj_kreveta.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+    return value.filter(item=>item.name.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
   }
 }

@@ -11,11 +11,11 @@ import 'rxjs/Rx';
 })
 
 export class MainPageComponent { 
-	broj_kreveta:String = "";
-	sobe: Object[];
+	name:String = "";
+	korisnici: Object[];
 	constructor(http: Http){
-		http.get('http://localhost/MetHotels/index2.php')
+		http.get('korisnici.json')
 		.map(res => res.json())
-		.subscribe(sobe => this.sobe = sobe);
+		.subscribe(korisnici => this.korisnici = korisnici);
 	}
 }

@@ -1,14 +1,14 @@
 <form class="navbar-form navbar-left" role="search">
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="broj_sobe">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="name">
     </div>
 </form>
 <div class="col-lg-12">
-<br/>Sobe<br/> 	<br/>
-<div *ngFor="#soba of sobe| SearchPipe:broj_kreveta">
-	broj sobe: {{soba.broj_sobe}}
+<br/>Korisnici<br/> 	<br/>
+<div *ngFor="#korisnik of korisnici| SearchPipe:name">
+	ime korisnika: {{korisnik.name}}
 	<br/>
-		broj kreveta: {{soba.broj_kreveta}}
+		mail korisnika: {{korisnik.email}}
 	<br/>
 
 
