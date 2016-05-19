@@ -21,15 +21,14 @@ export class FormComponent {
 	this.http = http;
 	this.router = router;
     this.registerForm = builder.group({
-     username: ["", Validators.none],
-     password: ["", Validators.none],
-     firstName: ["", Validators.none],
-     lastName: ["", Validators.none],
+     ime_hotela: ["", Validators.none],
+     grad: ["", Validators.none],
+     zvezdica: ["", Validators.none]
    });
   }
   
   onRegister(): void {
-	var data = "username="+this.registerForm.value.username+"&password="+this.registerForm.value.password+"&firstName="+this.registerForm.value.firstName+"&lastName="+this.registerForm.value.lastName;
+	var data = "ime_hotela="+this.registerForm.value.ime_hotela+"&grad="+this.registerForm.value.grad+"&zvezdica="+this.registerForm.value.zvezdica;
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	this.http.post('http://localhost/registerservice.php',data, {headers:headers})

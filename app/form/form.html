@@ -1,19 +1,15 @@
 <form role="form" [ngFormModel]="registerForm">
  <div class="form-group">
-    <label for="firstName">First name:</label>
-    <input type="text" class="form-control" ngControl='firstName'>
+    <label for="ime_hotela">ime hotela:</label>
+    <input type="text" class="form-control" ngControl='ime_hotela'>
   </div>
    <div class="form-group">
-    <label for="lastName">Last name:</label>
-    <input type="text" class="form-control"  ngControl='lastName'>
+    <label for="grad">grad:</label>
+    <input type="text" class="form-control"  ngControl='grad'>
   </div>
   <div class="form-group">
-    <label for="username">Username:</label>
-    <input type="text" class="form-control"  ngControl='username'>
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" ngControl='password'>
+    <label for="zvezdica">broj zvezdica:</label>
+    <input type="text" class="form-control"  ngControl='zvezdica'>
   </div>
   <button (click)="onRegister()" class="btn btn-default">Register</button>
 </form>
