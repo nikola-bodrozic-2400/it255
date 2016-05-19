@@ -32,7 +32,7 @@ export class FormComponent {
 	var data = "username="+this.registerForm.value.username+"&password="+this.registerForm.value.password+"&firstName="+this.registerForm.value.firstName+"&lastName="+this.registerForm.value.lastName;
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
-	this.http.post('http://localhost/php/registerservice.php',data, {headers:headers})
+	this.http.post('http://localhost/registerservice.php',data, {headers:headers})
     .map(res => res)
     .subscribe( data => this.postResponse = data,
 	err => alert(JSON.stringify(err)),
