@@ -36,8 +36,8 @@ export class FormComponent2 {
     .subscribe( data => this.postResponse = data,
 	err => alert(JSON.stringify(err)),
 	() => { 
-	 if(this.postResponse._body == "ok"){
-	 alert("Uspesno dodavanje sobe");
+	if(this.postResponse._body.indexOf("error") === -1){
+		alert("Uspesno dodavanje sobe");
 	    this.router.parent.navigate(['./MainPage']);
 	 }else{
 		alert("Neuspesno dodavanje sobe");
