@@ -18,7 +18,7 @@ export class SviracuniComponent {
   router: Router;
   postResponse: String;
   
-   	rooms: Object[];
+   	racuni: Object[];
   constructor(builder: FormBuilder, http: Http,  router: Router) {
 	this.http = http;
 	this.router = router;
@@ -27,8 +27,8 @@ export class SviracuniComponent {
 	headers.append('token', localStorage.getItem('token'));
 	http.get('http://localhost/php/getracuni.php',{headers:headers})
 		.map(res => res.json()).share()
-		.subscribe(rooms => {
-			this.rooms = rooms.rooms; 
+		.subscribe(racuni => {
+			this.racuni = racuni.racuni; 
 			setInterval(function(){
 			$('table').DataTable();
 			},200);
