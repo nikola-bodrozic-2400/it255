@@ -40,17 +40,15 @@ export class RegisterComponent {
 	this.http.post('http://localhost/php/registerservice.php',data, {headers:headers})
     .map(res => res)
     .subscribe( data => this.postResponse = data,
-	err => alert(JSON.stringify(err)),
+	err => {
+		var obj = JSON.parse(err._body);
+		document.getElementsByClassName("alert")[0].style.display = "block";
+		document.getElementsByClassName("alert")[0].innerHTML = obj.error.split("\\r\\n").join("<br/>").split("\"").join("");
+	},
 	() => { 
-	 if(this.postResponse._body.indexOf("error") === -1){
 		var obj = JSON.parse(this.postResponse._body);
 		localStorage.setItem('token', obj.token);
 	    this.router.parent.navigate(['./MainPage']);
-	 }else{
-		var obj = JSON.parse(this.postResponse._body);
-		document.getElementsByClassName("alert")[0].style.display = "block";
-		document.getElementsByClassName("alert")[0].innerHTML = obj.error.split("\\r\\n").join("<br/>").split("\"").join("");
-	 }
 	 }
 	);
 	

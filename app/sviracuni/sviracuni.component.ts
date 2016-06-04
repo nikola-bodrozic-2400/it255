@@ -26,14 +26,16 @@ export class SviracuniComponent {
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	headers.append('token', localStorage.getItem('token'));
 	http.get('http://localhost/php/getracuni.php',{headers:headers})
-		.map(res => res.json())
-		.subscribe(rooms => {this.rooms = rooms.rooms; 
-    $('table').DataTable();
-		});
-		
-
-
-   
+		.map(res => res.json()).share()
+		.subscribe(rooms => {
+			this.rooms = rooms.rooms; 
+			setInterval(function(){
+			$('table').DataTable();
+			},200);
+		},
+		err => {
+			 this.router.parent.navigate(['./MainPage']);
+		}
+		);
   }
-
 }

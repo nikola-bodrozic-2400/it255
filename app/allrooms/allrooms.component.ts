@@ -19,21 +19,23 @@ export class AllRoomsComponent {
   postResponse: String;
   
    	rooms: Object[];
-  constructor(builder: FormBuilder, http: Http,  router: Router) {
+	constructor(builder: FormBuilder, http: Http,  router: Router) {
 	this.http = http;
 	this.router = router;
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	headers.append('token', localStorage.getItem('token'));
 	http.get('http://localhost/php/getrooms.php',{headers:headers})
-		.map(res => res.json())
-		.subscribe(rooms => {this.rooms = rooms.rooms; 
-    $('table').DataTable();
-		});
-		
-
-
-   
+		.map(res => res.json()).share()
+		.subscribe(rooms => {
+			this.rooms = rooms.rooms; 
+			setInterval(function(){
+			$('table').DataTable();
+			},200);
+		},
+		err => {
+			 this.router.parent.navigate(['./MainPage']);
+		}
+		);
   }
-
 }
